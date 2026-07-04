@@ -1,0 +1,10 @@
+{
+  "name": "kisan-mitra-weather-mcp",
+  "version": "1.0.0",
+  "description": "Weather MCP server for KisanMitra using Open-Meteo",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.1"
+  }
+}

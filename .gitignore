@@ -1,0 +1,22 @@
+# Dependency directories
+node_modules/
+
+# Next.js build output
+frontend/.next/
+frontend/out/
+
+# Environment files
+backend/.env
+backend/.env.local
+frontend/.env
+frontend/.env.local
+
+# IDE/OS files
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

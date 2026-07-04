@@ -1,0 +1,10 @@
+{
+  "name": "kisan-mitra-ai-root",
+  "version": "1.0.0",
+  "description": "Root package for resolving shared agent dependencies",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "@modelcontextprotocol/sdk": "^1.4.1"
+  }
+}
