@@ -37,25 +37,27 @@ together and give the farmer **one simple, trustworthy answer** in both
   📸 ADD SCREENSHOT HERE: Homepage screenshot showing crop/soil/location selection
   Save as: screenshots/01-homepage.png
 -->
-![Homepage - Select Crop, Soil, and Location](screenshots/01-homepage.png)
+![Homepage - Select Crop, Soil, and Location]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/799ca6ce-6440-49e0-8f67-ad04516e992f" />
 
 <!--
   📸 ADD SCREENSHOT HERE: Final result page showing "SELL NOW" or "HOLD/WAIT" recommendation
   Save as: screenshots/02-recommendation.png
 -->
-![Final Unified Recommendation](screenshots/02-recommendation.png)
+![Final Unified Recommendation]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/9cb5d8ef-29ef-48d7-8663-7ff021677b63" />
+
+
 
 <!--
   📸 ADD SCREENSHOT HERE: Transparency panel showing all 3 agent reports side by side
   Save as: screenshots/03-agent-breakdown.png
 -->
-![Transparency Panel - Weather, Soil & Market Agent Reports](screenshots/03-agent-breakdown.png)
+![Transparency Panel - Weather, Soil & Market Agent Reports]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/9f94b64e-30f6-40e7-811e-7f392fc4b34f" />
 
 <!--
   📸 ADD SCREENSHOT HERE: The mandi price forecast chart (line graph)
   Save as: screenshots/04-price-chart.png
 -->
-![7-Day Mandi Price Forecast Chart](screenshots/04-price-chart.png)
+![7-Day Mandi Price Forecast Chart]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/911cdb6c-bf2f-4a47-af1a-62bb3c08001c" />
 
 ---
 
