@@ -37,30 +37,28 @@ together and give the farmer **one simple, trustworthy answer** in both
   Save as: screenshots/01-homepage.png
 -->
 ### 🏠 Homepage - Select Crop, Soil, and Location
-<img width="2880" height="1800" alt="Homepage showing crop, soil and location selection" src="https://github.com/user-attachments/assets/799ca6ce-6440-49e0-8f67-ad04516e992f" />
+<img width="1596" height="902" alt="Image" src="https://github.com/user-attachments/assets/95996ab7-6016-4c7d-91f7-ee01c7778e8a" />
+<img width="1588" height="899" alt="Image" src="https://github.com/user-attachments/assets/7e89b5ac-5a7b-4e82-ab56-205b361a04a8" />
 
 <!--
   📸 ADD SCREENSHOT HERE: Final result page showing "SELL NOW" or "HOLD/WAIT" recommendation
   Save as: screenshots/02-recommendation.png
 -->
 ### ✅ Final Unified Recommendation Panel
-<img width="2880" height="1800" alt="Final recommendation showing Sell Now or Hold Wait" src="https://github.com/user-attachments/assets/9cb5d8ef-29ef-48d7-8663-7ff021677b63" />
-
-
+<img width="1600" height="889" alt="Image" src="https://github.com/user-attachments/assets/91cf6821-8379-46ee-801d-28d39dc4a825" />
 
 <!--
   📸 ADD SCREENSHOT HERE: Transparency panel showing all 3 agent reports side by side
   Save as: screenshots/03-agent-breakdown.png
 -->
 ### 🔍 Transparency Panel - Weather, Soil & Market Agent Reports
-<img width="2880" height="1800" alt="Transparency panel with all three agent reports" src="https://github.com/user-attachments/assets/9f94b64e-30f6-40e7-811e-7f392fc4b34f" />
-
+<img width="1600" height="892" alt="Image" src="https://github.com/user-attachments/assets/4deb725f-50cc-42cb-acd1-6d08591526d6" />
 <!--
   📸 ADD SCREENSHOT HERE: The mandi price forecast chart (line graph)
   Save as: screenshots/04-price-chart.png
 -->
 ### 📈 7-Day Mandi Price Forecast Chart
-<img width="2880" height="1800" alt="Price forecast chart with historical and projected data" src="https://github.com/user-attachments/assets/911cdb6c-bf2f-4a47-af1a-62bb3c08001c" />
+<img width="1593" height="902" alt="Image" src="https://github.com/user-attachments/assets/0be833f5-9c6e-4839-a9eb-f0d9e800f373" />
 ---
 
 ## 🏗️ System Architecture
