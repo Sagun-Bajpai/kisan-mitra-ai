@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1536" height="1024" alt="Image" src="https://github.com/user-attachments/assets/3c7130ac-0819-4588-8139-47fb66ce86d0" />
+<img src="https://github.com/user-attachments/assets/3c7130ac-0819-4588-8139-47fb66ce86d0"" alt="KisanMitra Banner" width="100%"/>
 </div>
 
 # 🌾 KisanMitra (Farmer's Friend)
