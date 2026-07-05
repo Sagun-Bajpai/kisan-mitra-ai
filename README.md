@@ -30,20 +30,21 @@ together and give the farmer **one simple, trustworthy answer** in both
 ---
 
 ## 🎥 Live Demo
-
 **🔗 Try it yourself:** [kisan-mitra-ai.vercel.app](https://kisan-mitra-kaq6sn90c-sagun-bajpais-projects.vercel.app)
 
 <!--
   📸 ADD SCREENSHOT HERE: Homepage screenshot showing crop/soil/location selection
   Save as: screenshots/01-homepage.png
 -->
-![Homepage - Select Crop, Soil, and Location]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/799ca6ce-6440-49e0-8f67-ad04516e992f" />
+### 🏠 Homepage - Select Crop, Soil, and Location
+<img width="2880" height="1800" alt="Homepage showing crop, soil and location selection" src="https://github.com/user-attachments/assets/799ca6ce-6440-49e0-8f67-ad04516e992f" />
 
 <!--
   📸 ADD SCREENSHOT HERE: Final result page showing "SELL NOW" or "HOLD/WAIT" recommendation
   Save as: screenshots/02-recommendation.png
 -->
-![Final Unified Recommendation]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/9cb5d8ef-29ef-48d7-8663-7ff021677b63" />
+### ✅ Final Unified Recommendation Panel
+<img width="2880" height="1800" alt="Final recommendation showing Sell Now or Hold Wait" src="https://github.com/user-attachments/assets/9cb5d8ef-29ef-48d7-8663-7ff021677b63" />
 
 
 
@@ -51,14 +52,15 @@ together and give the farmer **one simple, trustworthy answer** in both
   📸 ADD SCREENSHOT HERE: Transparency panel showing all 3 agent reports side by side
   Save as: screenshots/03-agent-breakdown.png
 -->
-![Transparency Panel - Weather, Soil & Market Agent Reports]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/9f94b64e-30f6-40e7-811e-7f392fc4b34f" />
+### 🔍 Transparency Panel - Weather, Soil & Market Agent Reports
+<img width="2880" height="1800" alt="Transparency panel with all three agent reports" src="https://github.com/user-attachments/assets/9f94b64e-30f6-40e7-811e-7f392fc4b34f" />
 
 <!--
   📸 ADD SCREENSHOT HERE: The mandi price forecast chart (line graph)
   Save as: screenshots/04-price-chart.png
 -->
-![7-Day Mandi Price Forecast Chart]<img width="2880" height="1800" alt="Image" src="https://github.com/user-attachments/assets/911cdb6c-bf2f-4a47-af1a-62bb3c08001c" />
-
+### 📈 7-Day Mandi Price Forecast Chart
+<img width="2880" height="1800" alt="Price forecast chart with historical and projected data" src="https://github.com/user-attachments/assets/911cdb6c-bf2f-4a47-af1a-62bb3c08001c" />
 ---
 
 ## 🏗️ System Architecture
