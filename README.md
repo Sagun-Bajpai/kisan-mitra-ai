@@ -169,11 +169,8 @@ Open **http://localhost:3000** in your browser. 🎉
 
 ## 🌐 Deployment
 
-| Part | Platform | Live URL |
-|---|---|---|
-| Frontend | Vercel | `https://kisan-mitra-kaq6sn90c-sagun-bajpais-projects.vercel.app` |
-| Backend | Render | `https://kisan-mitra-backend-wbqb.onrender.com` |
-
+| Frontend | Vercel | [Visit Live Site](https://kisan-mitra-kaq6sn90c-sagun-bajpais-projects.vercel.app) |
+| Backend | Render | [API Endpoint](https://kisan-mitra-backend-wbqb.onrender.com) |
 <details>
 <summary><b>📖 Click to expand: Full deployment steps</b></summary>
 
