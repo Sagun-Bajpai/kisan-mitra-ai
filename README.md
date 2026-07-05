@@ -1,186 +1,203 @@
-# 🌾 KisanMitra (Farmer's Friend) Multi-Agent AI System
+<div align="center">
 
-KisanMitra is a multi-agent AI system designed for Indian farmers. It consolidates weather forecasts, crop/soil compatibility analysis, and mandi (market) price trends into **one single, simple, and trustworthy farming recommendation** (e.g., *"Wait 3 days to sell wheat — rain is expected, and prices are projected to rise by 6%"*).
+# 🌾 KisanMitra (Farmer's Friend)
+### AI Multi-Agent System for Indian Farmers
 
-This project was built for the **Kaggle Capstone Project** under the **"Agents for Good"** track, utilizing concepts from Google's Agent Development Kit (ADK) and the Model Context Protocol (MCP).
+**Kaggle "Agents for Good" Capstone Project**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-brightgreen)](https://kisan-mitra-kaq6sn90c-sagun-bajpais-projects.vercel.app)
+[![Backend](https://img.shields.io/badge/Backend-Render-blue)](https://kisan-mitra-backend-wbqb.onrender.com)
+[![Made with Gemini](https://img.shields.io/badge/AI-Google%20Gemini-orange)]()
+
+</div>
+
+---
+
+## 📌 What is KisanMitra?
+
+Indian farmers must combine **three different sources of information** —
+weather, soil suitability, and market prices — before making a single
+decision like *"Should I sell my wheat now, or wait?"*
+
+**KisanMitra solves this** by using **4 specialized AI agents** that work
+together and give the farmer **one simple, trustworthy answer** in both
+**English and Hindi**.
+
+> Example output:
+> *"Wait 3 days to sell wheat — rain is expected, and prices are
+> projected to rise by 6%."*
+
+---
+
+## 🎥 Live Demo
+
+**🔗 Try it yourself:** [kisan-mitra-ai.vercel.app](https://kisan-mitra-kaq6sn90c-sagun-bajpais-projects.vercel.app)
+
+<!--
+  📸 ADD SCREENSHOT HERE: Homepage screenshot showing crop/soil/location selection
+  Save as: screenshots/01-homepage.png
+-->
+![Homepage - Select Crop, Soil, and Location](screenshots/01-homepage.png)
+
+<!--
+  📸 ADD SCREENSHOT HERE: Final result page showing "SELL NOW" or "HOLD/WAIT" recommendation
+  Save as: screenshots/02-recommendation.png
+-->
+![Final Unified Recommendation](screenshots/02-recommendation.png)
+
+<!--
+  📸 ADD SCREENSHOT HERE: Transparency panel showing all 3 agent reports side by side
+  Save as: screenshots/03-agent-breakdown.png
+-->
+![Transparency Panel - Weather, Soil & Market Agent Reports](screenshots/03-agent-breakdown.png)
+
+<!--
+  📸 ADD SCREENSHOT HERE: The mandi price forecast chart (line graph)
+  Save as: screenshots/04-price-chart.png
+-->
+![7-Day Mandi Price Forecast Chart](screenshots/04-price-chart.png)
 
 ---
 
 ## 🏗️ System Architecture
 
-KisanMitra uses a hierarchical multi-agent coordination pattern:
+KisanMitra uses a **hierarchical multi-agent coordination pattern** — one
+"manager" agent (Orchestrator) talks to three "specialist" agents, then
+combines their answers into a single decision.
 
 ```mermaid
 graph TD
-    Farmer[Farmer / User Interface] -->|Query| Orchestrator[Orchestrator Agent]
-    
+    Farmer[👨‍🌾 Farmer / User Interface] -->|Query| Orchestrator[🧠 Orchestrator Agent]
+
     subgraph Specialist Agents
-        Orchestrator -->|Coordinates| WeatherAgent[Weather Agent]
-        Orchestrator -->|Coordinates| CropSoilAgent[Crop/Soil Agent]
-        Orchestrator -->|Coordinates| MarketAgent[Market Price Agent]
-      
+        Orchestrator -->|Coordinates| WeatherAgent[🌦️ Weather Agent]
+        Orchestrator -->|Coordinates| CropSoilAgent[🌱 Crop/Soil Agent]
+        Orchestrator -->|Coordinates| MarketAgent[💰 Market Price Agent]
+
         WeatherAgent -->|Calls Tool| MCPServer[Weather MCP Server]
         MCPServer -->|Fetches| OpenMeteo[Open-Meteo API]
         CropSoilAgent -->|Reads| RulesDB[(Crop Rules DB)]
-        MarketAgent -->|Runs| MandiSim[(Mandi price Simulator)]
+        MarketAgent -->|Runs| MandiSim[(Mandi Price Simulator)]
     end
-    
+
     WeatherAgent -->|Report| Orchestrator
     CropSoilAgent -->|Report| Orchestrator
     MarketAgent -->|Report| Orchestrator
-    
-    Orchestrator -->|Synthesizes Final Decision| Farmer
+
+    Orchestrator -->|✅ Final Decision| Farmer
 ```
 
-### 1. Orchestrator Agent
-* **File**: `[agents/OrchestratorAgent.js](file:///d:/kisan-mitra-ai/agents/OrchestratorAgent.js)`
-* **Role**: The main coordinator. It parses the farmer's location, crop type, and soil, invokes the three specialist agents in parallel, and passes their structured reports to Gemini to synthesize a final, highly simplified action recommendation and one-line reasoning. It outputs in both English and Hindi.
-
-### 2. Weather Agent
-* **File**: `[agents/WeatherAgent.js](file:///d:/kisan-mitra-ai/agents/WeatherAgent.js)`
-* **Role**: Spawns and connects to the Weather MCP Server using standard **stdio transport**. It requests weather forecast data and leverages Gemini to translate and interpret the weather conditions into specific agricultural advisories (e.g., whether to spray pesticides or irrigate). It features an automated direct-fetch fallback if the MCP server transport is unavailable.
-
-### 3. Crop/Soil Agent
-* **File**: `[agents/CropSoilAgent.js](file:///d:/kisan-mitra-ai/agents/CropSoilAgent.js)`
-* **Role**: Evaluates the biological suitability of the crop for the selected soil type. It references a local rule-based agricultural database containing preferred soils, seasonal windows, watering requirements, fertilizer inputs, and pest threats for popular Indian crops (Wheat, Rice, Cotton, Mustard, Sugarcane) and optimizes its recommendations using Gemini.
-
-### 4. Market Price Agent
-* **File**: `[agents/MarketAgent.js](file:///d:/kisan-mitra-ai/agents/MarketAgent.js)`
-* **Role**: Simulates historical (30-day) and projected (7-day) mandi prices relative to the Government Minimum Support Price (MSP) for various agricultural states. It uses Gemini to analyze the trend sentiment (Rising/Falling/Stable) and generates a strict "SELL NOW" or "HOLD / WAIT" recommendation.
-
-### 5. Weather MCP Server
-* **File**: `[mcp-server/index.js](file:///d:/kisan-mitra-ai/mcp-server/index.js)`
-* **Role**: Exposes a `get_weather_forecast` tool using the official `@modelcontextprotocol/sdk`. It wraps the free, public Open-Meteo API to fetch coordinate-based temperature, weather codes, and precipitation probabilities.
+| Agent | What It Does |
+|---|---|
+| 🧠 **Orchestrator Agent** | The "manager." Runs the other 3 agents in parallel, then uses Gemini to combine their reports into one final recommendation (Sell Now / Hold / Wait) in English + Hindi. |
+| 🌦️ **Weather Agent** | Fetches live weather forecasts via the Weather MCP Server, and turns raw data into farming advice (e.g. "don't spray pesticide, rain is coming"). |
+| 🌱 **Crop/Soil Agent** | Checks if the selected crop suits the selected soil type, using a rule-based database (wheat, rice, cotton, mustard, sugarcane). |
+| 💰 **Market Price Agent** | Simulates 30-day historical + 7-day projected mandi prices vs. Government MSP, and gives a Sell/Hold verdict. |
+| 🔌 **Weather MCP Server** | A tool server (using the official Model Context Protocol SDK) that wraps the free Open-Meteo weather API. |
 
 ---
 
 ## 🛠️ Tech Stack
-* **Frontend**: Next.js 15 (React, TypeScript, Tailwind CSS v4, Lucide Icons, Recharts for dynamic mandi graphs).
-* **Backend**: Node.js, Express (REST API, Agent orchestration).
-* **Agent Engine**: Google Gen AI SDK (`@google/genai`) invoking `gemini-2.5-flash` with structured JSON schema outputs.
-* **Integrations**: Model Context Protocol (MCP) Stdio Server/Client transport.
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | Next.js 15, React, TypeScript, Tailwind CSS v4, Recharts |
+| **Backend** | Node.js, Express.js (REST API) |
+| **AI Engine** | Google Gemini (`gemini-2.5-flash`) via `@google/genai` SDK |
+| **Agent Protocol** | Model Context Protocol (MCP) — Stdio transport |
+| **Frontend Hosting** | Vercel |
+| **Backend Hosting** | Render |
 
 ---
 
-## 🚀 How to Run Locally
+## ✨ Key Features
+
+- ✅ **4 AI agents working together** for one holistic decision
+- ✅ **Bilingual** — full Hindi + English support
+- ✅ **Visual price forecast chart** (historical + 7-day projected + MSP line)
+- ✅ **Crash-proof fallback logic** — if Gemini's API quota runs out, the app still gives a safe, rule-based answer instead of breaking
+- ✅ **Transparency Panel** — farmer can see *why* the AI gave that advice, from each individual agent
+
+---
+
+## 🚀 Run It Locally
 
 ### Prerequisites
-* Node.js (v18 or higher recommended, tested on Node v24)
-* A Google Gemini API Key (from [Google AI Studio](https://aistudio.google.com/))
+- Node.js v18+ (tested on v24)
+- A free Gemini API key from [Google AI Studio](https://aistudio.google.com/)
 
-### Step 1: Clone and Install Workspace Dependencies
-First, install the root dependencies which are shared by the agents:
+### 1. Install dependencies
 ```bash
-# Install root package dependencies
 npm install
-
-# Install MCP server dependencies
-cd mcp-server
-npm install
-cd ..
-
-# Install Backend dependencies
-cd backend
-npm install
-cd ..
-
-# Install Frontend dependencies
-cd frontend
-npm install
-cd ..
+cd mcp-server && npm install && cd ..
+cd backend && npm install && cd ..
+cd frontend && npm install && cd ..
 ```
 
-### Step 2: Configure Environment Variables
-Create a `.env` file in the `backend/` directory:
+### 2. Add your Gemini API key
 ```bash
 cp backend/.env.example backend/.env
 ```
-Open `backend/.env` and paste your Gemini API key:
+Open `backend/.env` and paste:
 ```env
 PORT=5000
-GEMINI_API_KEY=AIzaSyD...your_actual_key_here
+GEMINI_API_KEY=your_actual_key_here
 ```
 
-### Step 3: Run Standalone Verification Tests
-Before starting the servers, you can run isolation tests to ensure MCP and Gemini connections are functional:
+### 3. (Optional) Run verification tests
 ```bash
 cd backend
-# 1. Test Weather MCP Server and Open-Meteo fetch
-node test-mcp.js
-
-# 2. Test Agent orchestration pipeline (uses Gemini or fallbacks)
-node test-agents.js
-cd ..
+node test-mcp.js       # tests Weather MCP Server
+node test-agents.js    # tests the full agent pipeline
 ```
 
-### Step 4: Start Backend and Frontend
-In two separate terminals, run the backend and frontend servers:
-
-**Terminal 1 (Backend)**:
+### 4. Start the app
 ```bash
-cd backend
-npm run dev
-# Server will start on http://localhost:5000
+# Terminal 1
+cd backend && npm run dev     # runs on http://localhost:5000
+
+# Terminal 2
+cd frontend && npm run dev    # runs on http://localhost:3000
 ```
-
-**Terminal 2 (Frontend)**:
-```bash
-cd frontend
-npm run dev
-# App will start on http://localhost:3000
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open **http://localhost:3000** in your browser. 🎉
 
 ---
 
-## 🌐 Deployment Instructions
+## 🌐 Deployment
 
-KisanMitra is configured for quick and easy deployment on cloud platforms. The frontend is optimized for **Vercel** and the backend is configured for **Render**.
+| Part | Platform | Live URL |
+|---|---|---|
+| Frontend | Vercel | `https://kisan-mitra-kaq6sn90c-sagun-bajpais-projects.vercel.app` |
+| Backend | Render | `https://kisan-mitra-backend-wbqb.onrender.com` |
 
-### 💻 Backend Deployment (Render)
+<details>
+<summary><b>📖 Click to expand: Full deployment steps</b></summary>
 
-The backend Express app hosts the agent pipeline and coordinates the Weather MCP server via standard stdio transport. Follow these steps to deploy to Render:
+**Backend (Render):**
+1. Create a **New Web Service** on [Render](https://render.com), connect your GitHub repo.
+2. Root Directory: `.` (project root)
+3. Build Command: `npm install && cd backend && npm install`
+4. Start Command: `node backend/server.js`
+5. Add Environment Variable: `GEMINI_API_KEY`
 
-1. **Prepare Repository**: Ensure the backend files (including the `backend/Procfile` we created) are pushed to your GitHub repository.
-2. **Create Render Web Service**:
-   - Go to [Render](https://render.com/) and log in.
-   - Click **New +** and select **Web Service**.
-   - Connect your GitHub repository.
-3. **Configure Service Settings**:
-   - **Name**: `kisan-mitra-backend`
-   - **Root Directory**: `backend` (This is crucial as Render will build from the `backend` folder)
-   - **Language**: `Node`
-   - **Build Command**: `npm install`
-   - **Start Command**: Render will automatically detect the `Procfile` containing `web: node server.js`. Alternatively, you can explicitly set the Start Command to `node server.js` or `npm start`.
-4. **Environment Variables**:
-   - Under the **Environment** tab, click **Add Environment Variable** and define:
-     - `GEMINI_API_KEY`: Your Gemini API Key from Google AI Studio.
-     - `PORT`: `5000` (or leave empty, Render binds to port dynamically).
-5. **Deploy**: Click **Create Web Service**. Render will install dependencies and start the backend. Take note of the deployed URL (e.g., `https://kisan-mitra-backend.onrender.com`).
+**Frontend (Vercel):**
+1. Import your GitHub repo on [Vercel](https://vercel.com).
+2. Root Directory: `frontend`
+3. Add Environment Variable: `NEXT_PUBLIC_API_URL` = your Render backend URL
 
-*Note: Since the Weather Agent communicates with the MCP server using standard Node.js process orchestration (`node mcp-server/index.js` relative to the agents folder), Render's Node environment is fully compatible out-of-the-box.*
+</details>
 
 ---
 
-### 🎨 Frontend Deployment (Vercel)
+## 🔒 Security & Privacy
 
-The Next.js frontend builds and deploys to Vercel, utilizing the `frontend/vercel.json` config. Follow these steps to deploy to Vercel:
-
-1. **Import Project**:
-   - Go to [Vercel](https://vercel.com/) and click **Add New Project**.
-   - Select your GitHub repository.
-2. **Configure Project Settings**:
-   - Set **Root Directory** to `frontend`.
-   - Vercel will automatically detect the **Next.js** framework and configure the build command (`next build`) and output directory.
-3. **Environment Variables**:
-   - In the **Environment Variables** section, add the following key:
-     - `NEXT_PUBLIC_API_URL`: Set this to your deployed Render backend URL (e.g., `https://kisan-mitra-backend.onrender.com`). *Do not include a trailing slash.*
-4. **Deploy**: Click **Deploy**. Vercel will build the frontend and host it at a custom `.vercel.app` domain.
+- 🔑 API keys are stored only in server-side environment variables — never exposed to the frontend or hardcoded.
+- 🙅 **No personal data collected** — only crop type, soil type, and general region are needed. No names, phone numbers, or exact farm coordinates.
+- 🛡️ **Fallback resilience** — if the Gemini API is rate-limited, the app safely switches to rule-based advice instead of crashing.
 
 ---
 
-## 🔒 Security and Privacy Note
+## 👤 Author
 
-* **API Keys Security**: All API keys (specifically `GEMINI_API_KEY`) are stored in server-side environment variables (`.env`). They are never exposed to the client-side frontend or hardcoded into the source files.
-* **Farmer Privacy**: The system only requires general parameters (Crop type, Soil type, and general Region/Mandi name) to generate advisories. No personally identifiable information (PII) such as phone numbers, names, or specific farm coordinates is recorded or transmitted.
-* **Error Resilience**: The application includes fallback mode logic. If the Gemini API is rate-limited or unavailable, the system safely triggers rule-based advice and simulated mandi metrics rather than crashing, ensuring the farmer always receives guidance.
+**Sagun Bajpai**
+Built for the Kaggle "5-Day AI Agents: Intensive Vibe Coding Course with Google" Capstone Project.
